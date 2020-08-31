@@ -29,6 +29,17 @@ var TECLA = {
 
 jogo.pressionou = [];
 
+//Sons variados
+var somDisparo=document.getElementById("somDisparo");
+var somExplosao=document.getElementById("somExplosao");
+var musica=document.getElementById("musica");
+var somGameover=document.getElementById("somGameover");
+var somPerdido=document.getElementById("somPerdido");
+var somResgate=document.getElementById("somResgate");
+
+//Música em Loop
+musica.addEventListener("ended", function(){ musica.currentTime = 0; musica.play(); }, false);
+musica.play();
 
 
 //Verifica se o usuário pressionou alguma tecla
@@ -141,6 +152,7 @@ function loop() {
 	
         if (podeAtirar==true) {
             
+        somDisparo.play();
         podeAtirar=false;
         
         topo = parseInt($("#jogador").css("top"))
@@ -268,7 +280,9 @@ function colisao() {
     
 //Explosão 1
 function explosao1(inimigo1X,inimigo1Y) {
-    
+
+
+    somExplosao.play();
     $("#fundo").append("<div id='explosao1'></div");
 	$("#explosao1").css("background-image", "url(imgs/explosao.png)");
 	var div=$("#explosao1");
@@ -343,6 +357,8 @@ function explosao1(inimigo1X,inimigo1Y) {
 
 //Explosão3	
 function explosao3(amigoX,amigoY) {
+
+    somPerdido.play();
     $("#fundo").append("<div id='explosao3' class='anima4'></div");
     $("#explosao3").css("top",amigoY);
     $("#explosao3").css("left",amigoX);
